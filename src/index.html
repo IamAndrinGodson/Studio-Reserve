@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudioReserve</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-frame">
+      <aside class="rail">
+        <a class="brand" href="#" aria-label="StudioReserve">
+          <span>SR</span>
+          <strong>StudioReserve</strong>
+        </a>
+
+        <nav class="nav-list" aria-label="Workspace">
+          <button class="nav-item active" data-view="cockpit"><span>01</span>Cockpit</button>
+          <button class="nav-item" data-view="clients"><span>02</span>Clients</button>
+          <button class="nav-item" data-view="projects"><span>03</span>Projects</button>
+          <button class="nav-item" data-view="tax"><span>04</span>Tax Reserve</button>
+        </nav>
+
+        <section class="reserve-card">
+          <p>Backup mode</p>
+          <strong id="backupMode">Local vault</strong>
+          <button id="openAuth" class="ghost-button">Connect backup</button>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Studio finance cockpit</p>
+            <h1 id="viewTitle">Cockpit</h1>
+          </div>
+          <div class="topbar-actions">
+            <button id="exportData" class="icon-button" title="Export JSON backup">EX</button>
+            <button id="resetData" class="icon-button" title="Reset sample data">RS</button>
+            <button id="openEntry" class="primary-button">New Entry</button>
+          </div>
+        </header>
+
+        <section class="metrics-grid">
+          <article class="metric-card">
+            <span>Runway</span>
+            <strong id="runwayMetric">0 mo</strong>
+            <small>Cash divided by monthly burn</small>
+          </article>
+          <article class="metric-card">
+            <span>Tax reserve</span>
+            <strong id="taxMetric">$0</strong>
+            <small id="taxHint">Recommended reserve</small>
+          </article>
+          <article class="metric-card">
+            <span>Collected MTD</span>
+            <strong id="incomeMetric">$0</strong>
+            <small>Client payments this month</small>
+          </article>
+          <article class="metric-card">
+            <span>Studio margin</span>
+            <strong id="marginMetric">0%</strong>
+            <small>After expenses and tax reserve</small>
+          </article>
+        </section>
+
+        <section class="panel-layout" data-panel="cockpit">
+          <article class="panel span-2">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Cashflow runway</p>
+                <h2>Six month operating view</h2>
+              </div>
+              <select id="monthSelect" aria-label="Month filter"></select>
+            </div>
+            <div id="runwayChart" class="runway-chart"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Today</p>
+                <h2>Studio pulse</h2>
+              </div>
+            </div>
+            <div id="pulseList" class="pulse-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Upcoming</p>
+                <h2>Invoices</h2>
+              </div>
+            </div>
+            <div id="invoiceList" class="stack-list"></div>
+          </article>
+
+          <article class="panel span-2">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Ledger</p>
+                <h2>Recent movement</h2>
+              </div>
+            </div>
+            <div id="entryList" class="entry-list"></div>
+          </article>
+        </section>
+
+        <section class="data-view hidden" data-panel="clients">
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Revenue quality</p>
+                <h2>Client portfolio</h2>
+              </div>
+            </div>
+            <div id="clientGrid" class="client-grid"></div>
+          </article>
+        </section>
+
+        <section class="data-view hidden" data-panel="projects">
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Profitability</p>
+                <h2>Active projects</h2>
+              </div>
+            </div>
+            <div id="projectGrid" class="project-grid"></div>
+          </article>
+        </section>
+
+        <section class="data-view hidden" data-panel="tax">
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Reserve discipline</p>
+                <h2>Tax vault</h2>
+              </div>
+            </div>
+            <div class="tax-layout">
+              <div class="tax-orbit">
+                <strong id="taxPercent">0%</strong>
+                <span>of income reserved</span>
+              </div>
+              <div id="taxBreakdown" class="stack-list"></div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="entryDialog">
+      <form id="entryForm" method="dialog" class="dialog-card">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Studio ledger</p>
+            <h2>New entry</h2>
+          </div>
+          <button class="icon-button" value="cancel" title="Close">CL</button>
+        </div>
+        <div class="form-grid">
+          <label>Type<select name="type"><option value="income">Client income</option><option value="expense">Expense</option><option value="tax">Tax reserve</option></select></label>
+          <label>Amount<input name="amount" type="number" min="1" step="0.01" required /></label>
+          <label>Description<input name="description" maxlength="70" required /></label>
+          <label>Client<select name="client" id="clientInput"></select></label>
+          <label>Project<select name="project" id="projectInput"></select></label>
+          <label>Date<input name="date" type="date" required /></label>
+        </div>
+        <button class="primary-button wide" value="default">Save entry</button>
+      </form>
+    </dialog>
+
+    <dialog id="authDialog">
+      <div class="dialog-card">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Encrypted backup</p>
+            <h2>Connect your vault</h2>
+          </div>
+          <button id="closeAuth" class="icon-button" title="Close">CL</button>
+        </div>
+        <p class="muted">OAuth is ready at the interface layer. Add app credentials and a backup backend before syncing private finance data.</p>
+        <div class="provider-grid">
+          <button class="provider-button" data-provider="Google">Continue with Google</button>
+          <button class="provider-button" data-provider="Facebook">Continue with Facebook</button>
+        </div>
+        <p id="authMessage" class="auth-message"></p>
+      </div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "name": "studioreserve",
+  "version": "0.1.0",
+  "description": "A local-first desktop finance cockpit for freelancers, creators, and boutique studios.",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "serve": "node tools/serve.js",
+    "build:win": "electron-builder --win nsis",
+    "build:mac": "electron-builder --mac dmg",
+    "build:all": "electron-builder --win nsis --mac dmg"
+  },
+  "keywords": [
+    "finance",
+    "freelancer",
+    "studio",
+    "cashflow",
+    "desktop"
+  ],
+  "author": "Andrin",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.andrin.studioreserve",
+    "productName": "StudioReserve",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.finance"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

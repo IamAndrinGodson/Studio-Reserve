@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudioReserve | Finance OS for Creative Studios</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="StudioReserve home">
+        <span>SR</span>
+        <strong>StudioReserve</strong>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#positioning">Niche</a>
+        <a href="#features">Product</a>
+        <a href="#security">Security</a>
+        <a href="#download">Download</a>
+      </nav>
+      <button id="themeToggle" class="icon-button" title="Toggle theme" aria-label="Toggle theme">DM</button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Finance OS for independent creative businesses</p>
+          <h1>Run your studio with cashflow clarity.</h1>
+          <p class="hero-lede">
+            StudioReserve tracks client income, tax reserve, project margin, retainers, invoices, and runway in one local-first desktop cockpit.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#download">Download installer</a>
+            <a class="secondary-action" href="../src/index.html">Open app preview</a>
+          </div>
+          <div class="proof-strip" aria-label="Product highlights">
+            <span>Freelancers</span>
+            <span>Creators</span>
+            <span>Boutique studios</span>
+            <span>Local-first</span>
+          </div>
+        </div>
+
+        <div class="hero-stage" aria-label="StudioReserve dashboard preview">
+          <img src="assets/studioreserve-hero.png" alt="StudioReserve product preview" />
+          <div class="runway-widget">
+            <span>Operating runway</span>
+            <strong>6.2 mo</strong>
+            <small>Tax-safe and invoice-aware</small>
+          </div>
+          <div class="orbit-line"></div>
+        </div>
+      </section>
+
+      <section id="positioning" class="positioning">
+        <div class="section-heading">
+          <p class="eyebrow">Built for a specific operator</p>
+          <h2>Not another generic budget tracker.</h2>
+        </div>
+        <div class="position-grid">
+          <article>
+            <strong>Client-led income</strong>
+            <span>Track money by client, retainer, milestone, and project instead of only by category.</span>
+          </article>
+          <article>
+            <strong>Tax reserve discipline</strong>
+            <span>See how much should be moved into reserve before revenue feels spendable.</span>
+          </article>
+          <article>
+            <strong>Project margin focus</strong>
+            <span>Keep scope, vendor costs, and profitability visible while the work is active.</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="ticker-section" aria-label="Animated finance metrics">
+        <div class="ticker-track">
+          <span>Retainers collected</span>
+          <strong>$8.4k</strong>
+          <span>Tax reserve target</span>
+          <strong>$2.3k</strong>
+          <span>Open invoices</span>
+          <strong>$10.4k</strong>
+          <span>Studio margin</span>
+          <strong>54%</strong>
+          <span>Runway</span>
+          <strong>6.2 mo</strong>
+        </div>
+      </section>
+
+      <section id="features" class="feature-section">
+        <div class="section-heading">
+          <p class="eyebrow">Professional workflow</p>
+          <h2>A cockpit for the money decisions behind creative work.</h2>
+        </div>
+        <div class="feature-grid">
+          <article>
+            <span class="feature-icon">01</span>
+            <h3>Studio cockpit</h3>
+            <p>Runway, tax reserve, collected income, and studio margin stay visible at the top of the workspace.</p>
+          </article>
+          <article>
+            <span class="feature-icon">02</span>
+            <h3>Client portfolio</h3>
+            <p>Monitor retainer quality, project value, and client health without turning your finances into a spreadsheet maze.</p>
+          </article>
+          <article>
+            <span class="feature-icon">03</span>
+            <h3>Project profitability</h3>
+            <p>Compare budget and spend while projects are still active enough to correct.</p>
+          </article>
+          <article>
+            <span class="feature-icon">04</span>
+            <h3>Backup ready</h3>
+            <p>Use local data today, then connect Google or Facebook sign-in when encrypted backup is configured.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="security" class="security-section">
+        <div>
+          <p class="eyebrow">Private by default</p>
+          <h2>Your studio books start on your machine.</h2>
+          <p>
+            StudioReserve is designed as a desktop app first. The product can work locally without an account, while future cloud backup can be added through a secure OAuth-backed vault.
+          </p>
+        </div>
+        <div class="security-card">
+          <div><span></span><strong>Local-first ledger</strong></div>
+          <div><span></span><strong>JSON export backup</strong></div>
+          <div><span></span><strong>Google and Facebook auth hooks</strong></div>
+          <div><span></span><strong>Windows and macOS packaging</strong></div>
+        </div>
+      </section>
+
+      <section id="download" class="download-section">
+        <div class="section-heading">
+          <p class="eyebrow">Desktop install</p>
+          <h2>Install the studio finance cockpit.</h2>
+          <p>Windows uses an `.exe` installer. macOS uses a `.dmg` installer, which is the native macOS distribution format.</p>
+        </div>
+        <div class="download-grid">
+          <article class="download-card featured">
+            <span>Windows</span>
+            <h3>StudioReserve Setup.exe</h3>
+            <p>Installer target for Windows 10 and Windows 11.</p>
+            <a class="primary-action" href="../dist/StudioReserve%20Setup.exe" download>Download Windows installer</a>
+          </article>
+          <article class="download-card">
+            <span>macOS</span>
+            <h3>StudioReserve.dmg</h3>
+            <p>Native installer target for macOS desktop users.</p>
+            <a class="secondary-action" href="../dist/StudioReserve.dmg" download>Download macOS installer</a>
+          </article>
+        </div>
+        <div class="build-note">
+          <strong>Build commands</strong>
+          <code>npm run build:win</code>
+          <code>npm run build:mac</code>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
